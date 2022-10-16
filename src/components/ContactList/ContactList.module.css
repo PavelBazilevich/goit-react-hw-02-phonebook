@@ -1,0 +1,22 @@
+li {
+  display: flex;
+}
+li :nth-last-child(1) {
+  margin-bottom: 5px;
+}
+.item_content {
+  width: 300px;
+}
+
+.deleted_button {
+  margin-left: 30px;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 #3c93d5;
+  cursor: pointer;
+  font-size: inherit;
+  margin: 5px;
+  transition: 0.2s linear;
+}
+.deleted_button:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #3a2f28;
+}
