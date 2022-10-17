@@ -3,9 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import css from 'components/App.module.css';
-
 import { nanoid } from 'nanoid/non-secure';
-// nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 
 class App extends Component {
   state = {
