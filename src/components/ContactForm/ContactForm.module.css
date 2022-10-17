@@ -11,6 +11,10 @@
   filter: drop-shadow(0px 4px 4px #2196f3);
 }
 
+.input:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #3a2f28;
+}
+
 .contact_box .input_phone {
   display: flex;
   flex-direction: column;
