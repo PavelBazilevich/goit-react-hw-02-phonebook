@@ -6,7 +6,7 @@ class ContactForm extends Component {
   state = {
     name: '',
     number: '',
-  };l /
+  };
   hendleChenge = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
