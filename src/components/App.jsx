@@ -16,31 +16,36 @@ class App extends Component {
     filter: '',
   };
 
-  // onSubmitData = () => {};
-  repeatControlData = data => {
-    let nameArray = [];
-    nameArray = this.state.contacts.map(current => current.name);
-    if (!nameArray.includes(data.name)) {
-      let arrayCont = [];
-      arrayCont = [
-        ...this.state.contacts,
-        { id: nanoid(), name: data.name, number: data.number },
-      ];
-      return this.setState({ ...this.state, contacts: arrayCont });
-    } else {
-      alert(' Контакт вже є у телефонній книзі!');
-    }
-  };
-
   setFilter = filterData => {
-    this.setState({ ...this.state, filter: `${filterData}` });
+    // this.setState({ ...this.state, filter: filterData });
+    this.setState({ filter: filterData });
   };
 
-  filterArr = Arr => {
-    let newArr = Arr.filter(current =>
-      current.name.toUpperCase().includes(this.state.filter)
+  repeatControlData = data => {
+    const nameArray = this.state.contacts.map(current =>
+      current.name.toLowerCase()
     );
-    return newArr;
+
+    if (nameArray.includes(data.name.toLowerCase())) {
+      alert(' Контакт вже є у телефонній книзі!');
+      return;
+    }
+
+    const newContact = { id: nanoid(), ...data };
+
+    return this.setState(prev => {
+      return {
+        contacts: [...prev.contacts, newContact],
+      };
+    });
+  };
+
+  filterArr = () => {
+    const { contacts, filter } = this.state;
+    const normalizedFilter = filter.toUpperCase();
+    return contacts.filter(current =>
+      current.name.toUpperCase().includes(normalizedFilter)
+    );
   };
 
   deleteElement = (arr, idContact) => {
@@ -49,14 +54,13 @@ class App extends Component {
   };
 
   deleteContactFromContactList = idContact => {
-    let newArrAfterDel = this.deleteElement(this.state.contacts, idContact);
-    this.setState({
-      ...this.state,
-      contacts: [...newArrAfterDel],
-    });
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== idContact),
+    }));
   };
 
   render() {
+    const filteredContacts = this.filterArr();
     return (
       <div className={css.form_box}>
         <h1>Phonebook</h1>
@@ -64,7 +68,7 @@ class App extends Component {
         <h2>Contacts</h2>
         <Filter setFilter={this.setFilter} />
         <ContactList
-          contacts={this.filterArr(this.state.contacts)}
+          contacts={filteredContacts}
           deleted={this.deleteContactFromContactList}
         />
       </div>

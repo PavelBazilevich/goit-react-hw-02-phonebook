@@ -4,7 +4,6 @@ import css from 'components/ContactForm/ContactForm.module.css';
 
 class Filter extends Component {
   setValue = event => {
-    // можливо тут треба лет
     const value = event.currentTarget.value.toUpperCase();
     this.props.setFilter(value);
   };

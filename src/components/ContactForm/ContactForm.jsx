@@ -13,8 +13,8 @@ class ContactForm extends Component {
   };
   hendleSubmit = event => {
     event.preventDefault();
-    let contactArrr = { name: this.state.name, number: this.state.number };
-    this.props.onSubmitData(contactArrr);
+    let contactArr = { name: this.state.name, number: this.state.number };
+    this.props.onSubmitData(contactArr);
 
     this.reset();
   };
