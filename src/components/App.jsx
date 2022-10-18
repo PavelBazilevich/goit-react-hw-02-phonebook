@@ -4,7 +4,7 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import css from 'components/App.module.css';
 import { nanoid } from 'nanoid/non-secure';
-// дебаг
+
 class App extends Component {
   state = {
     contacts: [
@@ -17,7 +17,6 @@ class App extends Component {
   };
 
   setFilter = filterData => {
-    // this.setState({ ...this.state, filter: filterData });
     this.setState({ filter: filterData });
   };
 
